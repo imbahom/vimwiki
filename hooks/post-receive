@@ -1,0 +1,13 @@
+#!/bin/sh
+
+git log -1 | grep deploy
+RE=$?
+cd /var/www/wiki/vimwiki
+echo running in $PWD
+
+if [ $RE -eq 0 ] ; then
+	git --git-dir ./.git  pull master master
+	echo "deploy finish ..."
+else
+	echo "pull finish ..."
+fi
